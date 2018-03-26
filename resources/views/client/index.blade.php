@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('head')
-    IT MechaTech
+    {{__('IT MechaTech')}}
 @endsection
 
 @section('display-content')
@@ -9,13 +9,13 @@
 
         @if(count($items) != 0)
         <tr>
-            <th>Product</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Price</th>
+            <th>{{__('Product')}}</th>
+            <th>{{__('Title')}}</th>
+            <th>{{__('Description')}}</th>
+            <th>{{__('Price')}}</th>
         </tr>
         @else
-            <p>Nothing to show for the moment!</p>
+            <p>{{__('Nothing to show for the moment!')}}</p>
         @endif
         @foreach($items as $item)
             <tr>
@@ -23,7 +23,7 @@
                 <td> {{ $item->title }}</td>
                 <td> {{ $item->description }}</td>
                 <td> {{ $item->price }}</td>
-                <td><a href="{{route('Clients.addToCart',['id' => $item->id])}}">Add item</a></td>
+                <td><a href="{{route('Clients.addToCart',['id' => $item->id])}}">{{__('Add item')}}</a></td>
             </tr>
         @endforeach
 
@@ -31,7 +31,7 @@
 @endsection
 
 @section('links')
-    <a href="cart">Go to cart!</a>
+    <a href="cart">{{__('Go to cart!')}}</a>
 @endsection
 
 @section('footer')

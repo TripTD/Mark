@@ -12,25 +12,20 @@ class AdminsController extends Controller
 {
     //displaying the big table with all the products
     public function products() {
-
-        $login = Session::has('logged') ? Session::get('logged') : [];
-        if($login) {
-
-            $items = Product::all();
-            return view('admins.products', compact('items'));
-
-        } else {
+        if (!Session::has('logged')) {
             return view('admins.login');
         }
 
+        $items = Product::all();
+        return view('admins.products', compact('items'));
     }
 
     //displaying a certain product to be edited or up to insertion
-    public function product() {
+    public function product($id) {
 
         $login = Session::has('logged') ? Session::get('logged') : [];
         if($login) {
-            return view('admins.product');
+            return view('admins.product', compact('id'));
         } else {
             return view('admins.login');
         }
@@ -48,8 +43,7 @@ class AdminsController extends Controller
         if( env('AP_USER') == $request->input('username') && env('AP_PASSWORD') == $request->input('password')) {
 
             $login = Session::has('logged') ? Session::get('logged') : [];
-            $login[] = 1;
-            session()->put('logged',$login);
+            session()->put('logged', 1);
 
             return redirect()->route('Admins.products');
         }

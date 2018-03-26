@@ -47,22 +47,17 @@ Route::get('/products', [
 
 Route::get('/product/{id}', [
     'uses' => 'AdminsController@product',
-    'as' => 'Admins.editProduct'
-]);
-Route::get('/product',[
-    'uses' => 'AdminsController@product',
-    'as' => 'Admins.insertProduct'
+    'as' => 'Admins.editInsertProduct'
 ]);
 
-route::get('/removeProduct/{id}', [
+
+
+Route::get('/removeProduct/{id}', [
     'uses' => 'ProductsController@removeProduct',
     'as' => 'Products.removeProduct'
 ]);
-Route::post('/editProduct/{id}', [
-    'uses' => 'ProductsController@editProduct',
-    'as' => 'Products.editProduct'
-]);
-Route::post('/insertProduct',[
-    'uses' => 'ProductsController@insertProduct',
-    'as' => 'Products.insertProduct'
+
+Route::post('/product/{id}',[
+    'uses' => 'ProductsController@editInsertProduct',
+    'as' => 'Products.editInsertProduct'
 ]);

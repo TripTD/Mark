@@ -4,8 +4,6 @@
     <title>@yield('head')</title>
 </head>
 <body>
-<br>
-@include('partials.translate')
 <br><br>
 <div class="container">
     @yield('display-content')
